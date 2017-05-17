@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <title>Show Weather</title>
  <script 
- src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+ src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
 
  <script 
- src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.min.js">
+ src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.min.js">
  </script> 
 
  <script src="js/weather.js"></script>
@@ -17,7 +17,13 @@
 <body >
   <h1>{{weatherInfo.heading}}</h1>
   <h3>{{weatherInfo.subHeading1}}</h3>
-  <h4>{{weatherInfo.subHeading2.name}}</h4>
-      {{weatherInfo.subHeading2.link}}"
+  <h3>{{weatherInfo.subHeading2.name}}</h3>
+  <h4>{{weatherInfo.subHeading2.link}}"</h4>
+    <ul>  
+      <li>{{description}}</li>
+      <li>{{mphSpeed}}</li>
+      <li>{{location}}</li>
+      <li>{{cTemp}}</li>
+    </ul>
 </body>
 </html>
