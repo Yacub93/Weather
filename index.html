@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html ng-app="weatherApp" ng-controller="weatherCtrl">
+<head>
+  <meta charset="UTF-8" />
+  <title>Show Weather</title>
+ <script 
+ src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+
+ <script 
+ src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.min.js">
+ </script> 
+
+ <script src="js/weather.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+</head>
+<body >
+  <h1>{{weatherInfo.heading}}</h1>
+  <h3>{{weatherInfo.subHeading1}}</h3>
+  <h4>{{weatherInfo.subHeading2.name}}</h4>
+      {{weatherInfo.subHeading2.link}}"
+</body>
+</html>
