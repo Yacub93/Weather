@@ -1,29 +1,43 @@
 <!DOCTYPE html>
 <html ng-app="weatherApp" ng-controller="weatherCtrl">
 <head>
-  <meta charset="UTF-8" />
-  <title>Show Weather</title>
- <script 
- src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+	<meta charset="UTF-8" />
+	<title>My Weather</title>
 
- <script 
- src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.min.js">
- </script> 
+	<!-- JS Scripts -->
+	<script 
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+	<script 
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.min.js">
+	</script> 
+	<script src="js/weather.js"></script>
 
- <script src="js/weather.js"></script>
+	<!-- CSS files-->
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/weather.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+
 </head>
-<body >
-  <h1>{{weatherInfo.heading}}</h1>
-  <h3>{{weatherInfo.subHeading1}}</h3>
-  <h3>{{weatherInfo.subHeading2.name}}</h3>
-  <h4>{{weatherInfo.subHeading2.link}}"</h4>
-    <ul>  
-      <li>{{description}}</li>
-      <li>{{mphSpeed}}</li>
-      <li>{{location}}</li>
-      <li>{{cTemp}}</li>
-    </ul>
+<body class="text-center info" ng-style=weatherBackground>
+	<h1>{{weatherInfo.heading}}</h1>
+	<p>{{weatherInfo.appInfo}}</p>
+	<h3>{{weatherInfo.subHeading2.name}}</h3>
+	<div>
+		<a class="btn-lg" 
+		ng-href="{{weatherInfo.subHeading2.githubprofile}}" 
+		target="blank" title="Yacub93"><i class="fa fa-github"></i></a>
+
+		<a class="btn-lg" 
+		ng-href="{{weatherInfo.subHeading2.linkinprofile}}" 
+		target="blank" title="Yacub Ali"><i class="fa fa-linkedin"></i></a>
+	</div>
+	<a class="btn-lg btn-primary">{{description | uppercase}} <img ng-src="{{icon}}"></a>
+	<a class="btn-lg btn-primary" ng-init="spdVal=true" ng-show="spdVal" ng-click="spdVal=!spdVal">{{mphSpeed}}</a>
+	<a class="btn-lg btn-primary" ng-show="!spdVal" ng-click="spdVal=!spdVal">{{kphSpeed}}</a>
+	<a class="btn-lg btn-primary">{{location}}</a>
+	<a class="btn-lg btn-primary" ng-init="tmpVal=true" ng-show="tmpVal" ng-click="tmpVal=!tmpVal">{{cTemp}}</a>
+	<a class="btn-lg btn-primary" ng-show="!tmpVal" ng-click="tmpVal=!tmpVal">{{fTemp}}</a>
+
 </body>
 </html>
