@@ -39,5 +39,45 @@
 	<a class="btn-lg btn-primary" ng-init="tmpVal=true" ng-show="tmpVal" ng-click="tmpVal=!tmpVal">{{cTemp}}</a>
 	<a class="btn-lg btn-primary" ng-show="!tmpVal" ng-click="tmpVal=!tmpVal">{{fTemp}}</a>
 
+<div class="row">
+	<div class="search-weather eight columns offset-by-two">
+		<h3>International Forecast</h3>
+			<form  ng-submit="submit()" ng-controller="weatherCtrl">
+			<div class="input-group">
+			  <input type="search" ng-model="text" class="form-control"" placeholder="Enter City or Country name..." name="text" />
+			
+			  <button class="btn btn-primary" type="submit">
+			 	<i class="fa fa-search"></i>
+			  	Search
+		      </button>
+		    </div>  
+		</form>
+	</div>
+</div>
+<script>
+var x = document.getElementById("location");
+
+
+        // HTML5 Geolocation.
+function getLocation() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+            // console.log('latitude ' + pos.lat);
+            // console.log('longitude ' + pos.lng);
+            showPosition(pos);
+        }); 
+    } 
+}
+
+function showPosition(pos) {
+
+    x.innerHTML = "Latitude: " + pos.lat + 
+    "<br>Longitude: " + pos.lng;
+}
+</script>	
 </body>
 </html>

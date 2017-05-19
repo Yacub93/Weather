@@ -58,6 +58,13 @@ classApp.controller("weatherCtrl", function($scope, $http) {
             };
             break;
          }
+        case 'shower rain':{
+          obj.weatherBackground = {
+              "background": "url('https://images.unsplash.com/photo-1438449805896-28a666819a20?dpr=2&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=&bg=')",
+              "background-size": "cover"
+            };
+            break;
+         }
         case 'moderate breeze':{
           obj.weatherBackground = {
               "background": "url('https://images.unsplash.com/photo-1456356627738-3a96db6e2e33?dpr=2&auto=format&fit=crop&w=1500&h=990&q=80&cs=tinysrgb&crop=&bg=')",
@@ -111,7 +118,7 @@ classApp.controller("weatherCtrl", function($scope, $http) {
             };
             break;
          }
-     }  
+     } //.switch statement  
 
    });
   });
