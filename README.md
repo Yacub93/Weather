@@ -12,7 +12,9 @@ A simple, opensource weather app built using the AngularJS Framework. It gathers
  * Background changes depending on current weather condition.
 
 ## Screenshots
-
+<br>
+<img width="1280" alt="weather-app" src="https://cloud.githubusercontent.com/assets/26364425/26254414/6f91c786-3cae-11e7-961e-c9d88afa23ba.png">
+<br>
 
 ## TODO
  * Implement a search feature for weather information of other locations.
