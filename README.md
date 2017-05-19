@@ -13,7 +13,7 @@ A simple, opensource weather app built using the AngularJS Framework. It gathers
 
 ## Screenshots
 <br>
-<img width="1280" alt="weather-app" src="https://cloud.githubusercontent.com/assets/26364425/26254414/6f91c786-3cae-11e7-961e-c9d88afa23ba.png">
+<img width="1274" alt="weather-app" src="https://cloud.githubusercontent.com/assets/26364425/26254679/4c94b0b2-3caf-11e7-937c-10a332f16124.png">
 <br>
 
 ## TODO
