@@ -11,18 +11,19 @@
 	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.min.js">
 	</script> 
 	<script src="js/weather.js"></script>
+	<script src="bower_components/angular-skycons/angular-skycons.min.js"></script>
 
 	<!-- CSS files-->
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="css/weather.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/weather.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
 </head>
 <body class="text-center info" ng-style=weatherBackground>
 	<h1>{{weatherInfo.heading}}</h1>
 	<p>{{weatherInfo.appInfo}}</p>
-	<h3>{{weatherInfo.subHeading2.name}}</h3>
+	<!-- <h3>{{weatherInfo.subHeading2.name}}</h3> -->
 	<div>
 		<a class="btn-lg" 
 		ng-href="{{weatherInfo.subHeading2.githubprofile}}" 
@@ -42,42 +43,42 @@
 <div class="row">
 	<div class="search-weather eight columns offset-by-two">
 		<h3>International Forecast</h3>
-			<form  ng-submit="submit()" ng-controller="weatherCtrl">
+			<form  ng-controller="forecastCtrl" >
 			<div class="input-group">
-			  <input type="search" ng-model="text" class="form-control"" placeholder="Enter City or Country name..." name="text" />
+			  <input type="text" ng-places-autocomplete  ng-model="formData.city" class="form-control" placeholder="Enter City or keyword..." />
 			
-			  <button class="btn btn-primary" type="submit">
+			  <button id="search" class="btn btn-primary" ng-click="getCity()">
 			 	<i class="fa fa-search"></i>
 			  	Search
 		      </button>
 		    </div>  
+
+				<div ng-show="showForecast">
+					<div class="forecast-info">
+						<div class="forecast-info-animation">
+							<canvas id="animated-icon" width="220" height="240"></canvas>
+						</div>
+					</div>		
+					<table class="table">
+						  <thead>
+						    <tr>
+						      <th>City</th>
+						      <th>Description</th>
+						      <th>Speed</th>
+						      <th>Temp</th>
+						    </tr>
+						  </thead>
+						  <tbody>
+						    <tr>
+						      <td>{{city}}</td>
+						      <td>{{forecast}}</td>
+						      <td>{{mphSpeed}} / {{kphSpeed}}</td>
+						      <td>{{cTemp}} / {{fTemp}}</td>
+						    </tr>
+						  </tbody>
+					</table>
 		</form>
 	</div>
-</div>
-<script>
-var x = document.getElementById("location");
-
-
-        // HTML5 Geolocation.
-function getLocation() {
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(function(position) {
-            var pos = {
-              lat: position.coords.latitude,
-              lng: position.coords.longitude
-            };
-            // console.log('latitude ' + pos.lat);
-            // console.log('longitude ' + pos.lng);
-            showPosition(pos);
-        }); 
-    } 
-}
-
-function showPosition(pos) {
-
-    x.innerHTML = "Latitude: " + pos.lat + 
-    "<br>Longitude: " + pos.lng;
-}
-</script>	
+</div>	
 </body>
 </html>

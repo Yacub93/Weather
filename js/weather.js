@@ -1,11 +1,13 @@
-var classApp = angular.module('weatherApp', []);
+var classApp = angular.module('weatherApp', [    
+// 3rd party dependencies
+    'angular-skycons']);
 
 classApp.controller("weatherCtrl", function($scope, $http) {
   var obj = $scope;
 
   obj.weatherInfo = {
-    heading: "Open Weather API Project",
-    appInfo: "A Simple Weather App that displays local weather depending on the user\'s location",
+    heading: "Local and Global Forecast",
+    appInfo: "A Simple Weather App that displays local weather depending on the user\'s location. A search bar allows the user view weather from different cities globally",
     subHeading2: {
       name: "View GitHub & LinkedIn",
       githubprofile: "https://github.com/Yacub93",
@@ -118,12 +120,138 @@ classApp.controller("weatherCtrl", function($scope, $http) {
             };
             break;
          }
-     } //.switch statement  
+     } //.Close switch statement  
 
-   });
-  });
-});         
+   });//.http.get OpenWeatherURL
+  });//.http.get Json API call 
+}); //.Close controller         
     
+
+// Global Forecast Controller
+classApp.controller('forecastCtrl', function($scope, $http) {
+
+  var skycons = new Skycons({"color": "#FFFAFF"});
+
+  // skycons.add("animated-icon", Skycons.CLEAR_DAY);
+
+  skycons.play();
+
+      // create a blank object to handle form data.
+  $scope.formData = {};
+  $scope.showForecast = false; //hide div content initially
+
+    
+  $scope.getCity = function () {
+
+    // var element = event.srcElement ? event.srcElement : event.target;
+    // console.log(element, angular.element(element));
+
+   $scope.showForecast = true; // display forecast if getCity is called
+  
+    var apiKey = "e8f0c7051cd6350e566bdb40cb8ac68d";
+    var openWeatherURL = "http://api.openweathermap.org/data/2.5/weather?q=" + $scope.formData.city + "&APPID=" + apiKey;
+
+    $http.get(openWeatherURL).success(function(data) {
+
+    $scope.forecast =  data.weather[0].description;
+    $scope.city = data.name;
+
+    $scope.speed = data.wind.speed;
+
+    // Convert knot to mph/kph
+    $scope.mphSpeed = (2.237 * data.wind.speed).toFixed(1) + "mph";//convert to mph 1dp place
+    $scope.kphSpeed = (1.852 * data.wind.speed).toFixed(1) + "kph";//convert to kph 1dp place
+
+    $scope.temp = data.main.temp;
+
+    // Convert kelvin to Fahrenheit/Celsius
+    $scope.cTemp = ($scope.temp - 273).toFixed(1) + " (°C)";
+    $scope.fTemp = ($scope.temp * (9/5) - 459.67).toFixed(1) + " (°F)";
+
+    
+    // console.log("City: " +  $scope.city);
+    // console.log("Description: " + $scope.forecast);
+    // console.log("Speed: " +  $scope.mphSpeed + '/' + $scope.kphSpeed);
+    // console.log("Temp: " +   $scope.cTemp + '/' + $scope.fTemp);
+
+    // Update Weather animation according to weather description
+    // Icons for the weather
+    switch($scope.forecast){
+        case 'clear sky':{
+          skycons.set("animated-icon", Skycons.CLEAR_DAY);
+            break;
+         };
+        case 'moderate rain':{
+          skycons.set("animated-icon", Skycons.RAIN);
+            break;
+         }
+        case 'shower rain':{
+          skycons.set("animated-icon", Skycons.RAIN);
+            break;
+         }
+        case 'light rain':{
+          skycons.set("animated-icon", Skycons.RAIN);
+            break;
+         }
+        case 'broken clouds':{
+          skycons.set("animated-icon", Skycons.CLOUDY);
+            break;
+         }
+        case 'few clouds':{
+          skycons.set("animated-icon", Skycons.PARTLY_CLOUDY_DAY);
+            break;
+         }
+        case 'scattered clouds':{
+          skycons.set("animated-icon", Skycons.CLOUDY);
+            break;
+         }
+        case 'moderate breeze':{
+          skycons.set("animated-icon", Skycons.WIND);
+            break;
+         }
+        case 'mist':{
+          skycons.set("animated-icon", Skycons.FOG);
+            break;
+         }
+        case 'fog':{
+          skycons.set("animated-icon", Skycons.FOG);
+            break;
+         }
+        case 'snow':{
+          skycons.set("animated-icon", Skycons.SNOW);
+            break;
+         }
+        case 'storm':{
+          skycons.set("animated-icon", Skycons.SLEET);
+            break;
+         }
+
+
+
+
+
+
+
+
+   }      
+ 
+    
+    });
+    // console.log("City selected is: " + $scope.formData.city);
+ }
+
+
+});
+
+
+
+
+
+
+
+
+
+
 // TODO:
 // Implement  a search feature for weather information of other locations.
 // use latest angular version functionality below:

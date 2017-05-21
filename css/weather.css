@@ -1,12 +1,12 @@
 a.btn-lg.btn-primary.ng-binding {
-	background-color: #22b99c;
+	background-color: #B0CF00;
 	color: #ffffff;
 	margin: 5px;
 
 }
 
 a.btn-lg.btn-primary:hover{
-	background-color: #34495d;
+	background-color: #003B2B;
 }
 
 .info{
@@ -20,13 +20,13 @@ h1,h3,h4,p{
 
 .fa.fa-github{
 	font-size:60px;
-	color:#22b99c;
+	color:#B0CF00;
 }
 
 .fa.fa-linkedin{
 	font-size:60px;
 	margin-bottom: 20px;
-	color:#22b99c;
+	color:#B0CF00;
 }
 
 .fa.fa-github:hover,.fa.fa-linkedin:hover{
@@ -50,26 +50,31 @@ form {
   margin-bottom: 0; }
 
 .input-group {
-  width: 900px; }
+  width: 750px; }
 
 
-.input-group::-webkit-input-placeholder {
-  font-family: 'myFont', Arial, Helvetica, sans-serif;
+#animated-icon {
+
+    padding: 0;
+    margin: auto;
+    display: block;
+
+    
 }
 
+#search {
+	background-color: #1abc9c;
+	border-color: #1abc9c;
+	color: #ffffff;
+}
 
-
-
-
-.hidden {
-  display: none;
+#search:hover{
+	background-color: #003B2B;
+	border-color: #003B2B;
 }
 
 @media screen and (max-width: 1050px) {
   input[type="search"] {
     width: 100%; } }
-/*.input-group{
-	margin: 0 auto;
-	width: 550px;
-}*/
+
 
