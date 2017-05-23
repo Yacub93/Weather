@@ -7,11 +7,10 @@ classApp.controller("weatherCtrl", function($scope, $http) {
 
   obj.weatherInfo = {
     heading: "Local and Global Forecast",
-    appInfo: "A Simple Weather App that displays local weather depending on the user\'s location. A search bar allows the user view weather from different cities globally",
+    appInfo: "A simple weather app that displays local weather information depending on the user\'s location. The search bar allows the user to view weather from different cities across the globe.",
     subHeading2: {
-      name: "View GitHub & LinkedIn",
       githubprofile: "https://github.com/Yacub93",
-      linkinprofile: "https://uk.linkedin.com/in/yacub-ali-4898b9103"
+      linkedinprofile: "https://uk.linkedin.com/in/yacub-ali-4898b9103"
     }
   };
 
@@ -26,6 +25,7 @@ classApp.controller("weatherCtrl", function($scope, $http) {
           // console.log(openWeatherURL);
 
     obj.description = data.weather[0].description;
+    obj.country = data.sys.country;
     obj.speed = data.wind.speed;
 
     // Convert knot to mph/kph
@@ -112,7 +112,28 @@ classApp.controller("weatherCtrl", function($scope, $http) {
             };
             break;
          }
-         // Prevents app from breaking by setting default background
+        case 'scattered clouds':{
+          obj.weatherBackground = {
+              "background": "url('https://images.unsplash.com/photo-1486339350933-d24faf16ca70?dpr=2&auto=format&fit=crop&w=1500&h=1124&q=80&cs=tinysrgb&crop=&bg=')",
+              "background-size": "cover"
+            };
+            break;
+         }
+        case 'overcast clouds':{
+          obj.weatherBackground = {
+              "background": "url('https://images.unsplash.com/photo-1481433705997-f3c061a4eac8?dpr=2&auto=format&fit=crop&w=1500&h=997&q=80&cs=tinysrgb&crop=&bg=')",
+              "background-size": "cover"
+            };
+            break;
+         }
+        case 'broken clouds':{
+          obj.weatherBackground = {
+              "background": "url('https://images.unsplash.com/photo-1486182810355-b1c079a9e78b?dpr=2&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=&bg=')",
+              "background-size": "cover"
+            };
+            break;
+         }
+         // Prevents app from breaking by setting a default background
         default:{
           obj.weatherBackground = {
               "background": "url('https://images.unsplash.com/photo-1417577097439-425fb7dec05e?dpr=2&auto=format&fit=crop&w=1500&h=844&q=80&cs=tinysrgb&crop=&bg=')",
@@ -155,6 +176,7 @@ classApp.controller('forecastCtrl', function($scope, $http) {
 
     $scope.forecast =  data.weather[0].description;
     $scope.city = data.name;
+    $scope.country = data.sys.country;
 
     $scope.speed = data.wind.speed;
 
@@ -168,7 +190,9 @@ classApp.controller('forecastCtrl', function($scope, $http) {
     $scope.cTemp = ($scope.temp - 273).toFixed(1) + " (°C)";
     $scope.fTemp = ($scope.temp * (9/5) - 459.67).toFixed(1) + " (°F)";
 
-    
+    $scope.humidity = data.main.humidity + '%';
+
+
     // console.log("City: " +  $scope.city);
     // console.log("Description: " + $scope.forecast);
     // console.log("Speed: " +  $scope.mphSpeed + '/' + $scope.kphSpeed);
@@ -179,6 +203,10 @@ classApp.controller('forecastCtrl', function($scope, $http) {
     switch($scope.forecast){
         case 'clear sky':{
           skycons.set("animated-icon", Skycons.CLEAR_DAY);
+          $scope.weatherBackground = {
+              "background": "url('https://images.unsplash.com/photo-1419833173245-f59e1b93f9ee?dpr=2&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=&bg=')",
+              "background-size": "inherit"
+            };
             break;
          };
         case 'moderate rain':{
@@ -225,14 +253,6 @@ classApp.controller('forecastCtrl', function($scope, $http) {
           skycons.set("animated-icon", Skycons.SLEET);
             break;
          }
-
-
-
-
-
-
-
-
    }      
  
     

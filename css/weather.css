@@ -14,8 +14,19 @@ a.btn-lg.btn-primary:hover{
 	margin-top: 5px;
 }
 
-h1,h3,h4,p{
-	color: #ffffff; 
+h1,h3,h4{
+	color: #003B2B;
+	font-weight: 700px;
+    margin: 15px auto 0;
+  	padding: 5px 0px;
+  	bottom: 0;
+
+}
+p {
+
+	color: #003B2B; 
+	padding: 5px 100px;
+	font-weight: 700;
 }
 
 .fa.fa-github{
@@ -29,8 +40,13 @@ h1,h3,h4,p{
 	color:#B0CF00;
 }
 
-.fa.fa-github:hover,.fa.fa-linkedin:hover{
-	color: #ffffff;
+.fa.fa-github:hover{
+	color: #333;
+}
+
+.fa.fa-linkedin:hover{
+	/*color: #ffffff;*/
+	color: #0077B5 ; 
 }
 
 
@@ -63,14 +79,19 @@ form {
 }
 
 #search {
-	background-color: #1abc9c;
-	border-color: #1abc9c;
+	background-color: #1ABB12;
+	border-color: #1ABB12;
 	color: #ffffff;
 }
 
 #search:hover{
 	background-color: #003B2B;
 	border-color: #003B2B;
+}
+
+.table{
+	background-color: #003B2B;
+	color: #ffffff;
 }
 
 @media screen and (max-width: 1050px) {
