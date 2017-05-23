@@ -8,8 +8,10 @@ A simple, opensource weather app built using the AngularJS Framework. It gathers
  * Add the generated api key in js/weather.js file 
 
 ## Current Features:
- * hover over Wind Speed and Temperature displays different units of measure
+ * Hover over Wind Speed and Temperature displays different units of measure.
  * Background changes depending on current weather condition.
+ * Search Feature added for forecast info of cities across the world.
+ * Lightweight weather icons (Skycons) used in application - https://darkskyapp.github.io/skycons/.
 
 ## Screenshots
 <br>
